@@ -1,3 +1,5 @@
+'use strict'
+
 import classNames from 'classnames/bind'
 import styles from './SlideShow.module.scss'
 

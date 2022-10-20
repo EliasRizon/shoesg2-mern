@@ -1,3 +1,5 @@
+'use strict'
+
 import { HeaderOnlyLayout, SlideShowLayout } from '~/layouts'
 
 import Home from '~/pages/Home'

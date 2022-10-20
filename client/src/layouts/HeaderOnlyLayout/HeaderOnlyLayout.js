@@ -1,5 +1,7 @@
-import Header from '~/components/Header'
-import Footer from '~/components/Footer'
+'use strict'
+
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 function HeaderOnlyLayout({ children }) {
   return (

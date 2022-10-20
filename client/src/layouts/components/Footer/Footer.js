@@ -1,3 +1,5 @@
+'use strict'
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import classNames from 'classnames/bind'
 import styles from './Footer.module.scss'
