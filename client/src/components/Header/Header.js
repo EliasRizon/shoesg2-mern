@@ -1,7 +1,11 @@
 import classNames from 'classnames/bind'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styles from './Header.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { LOGOUT } from '~/constants/actionTypes'
+import { useDispatch } from 'react-redux'
 import decode from 'jwt-decode'
 
 const cn = classNames.bind(styles)
@@ -9,18 +13,24 @@ const cn = classNames.bind(styles)
 function Header() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
   const location = useLocation()
+  const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   const token = user?.token
+  const logout = useCallback(() => {
+    dispatch({ type: LOGOUT })
+    setUser(null)
+  }, [dispatch])
 
-  //   if (token) {
-  //     const decodedToken = decode(token)
+  useEffect(() => {
+    const token = user?.token
 
-  //     if (decodedToken.exp * 1000 < new Date().getTime()) logout()
-  //   }
+    if (token) {
+      const decodedToken = decode(token)
 
-  //   setUser(JSON.parse(localStorage.getItem('profile')))
-  // }, [location])
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout()
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')))
+  }, [location, user?.token, logout])
 
   return (
     <header className={cn('header')}>
@@ -60,25 +70,40 @@ function Header() {
                 'header__navbar-item-link-account',
               )}
             >
-              <b>ĐĂNG NHẬP</b>
+              {user?.result ? (
+                <>
+                  <FontAwesomeIcon
+                    className={cn('user-icon')}
+                    icon={faUser}
+                  ></FontAwesomeIcon>
+                  <span className={cn('userName')}>
+                    {user.result.firstName || user.result.name}
+                  </span>
+                </>
+              ) : (
+                'ĐĂNG NHẬP'
+              )}
             </a>
-            <ul className={cn('header_account-list')}>
-              <li>
-                <a className={cn('header_account-list-link')} href="/">
-                  TÀI KHOẢN CỦA TÔI
-                </a>
-              </li>
-              <li>
-                <a className={cn('header_account-list-link')} href="/">
-                  ĐƠN MUA
-                </a>
-              </li>
-              <li>
-                <a className={cn('header_account-list-link')} href="/">
-                  ĐĂNG XUẤT
-                </a>
-              </li>
-            </ul>
+            {user?.result && (
+              <ul className={cn('header_account-list')}>
+                <li>
+                  <div className={cn('header_account-list-btn')}>
+                    TÀI KHOẢN CỦA TÔI
+                  </div>
+                </li>
+                <li>
+                  <div className={cn('header_account-list-btn')}>ĐƠN MUA</div>
+                </li>
+                <li>
+                  <div
+                    className={cn('header_account-list-btn')}
+                    onClick={logout}
+                  >
+                    ĐĂNG XUẤT
+                  </div>
+                </li>
+              </ul>
+            )}
           </div>
         </nav>
       </div>

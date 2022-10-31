@@ -89,12 +89,23 @@
   display: block;
 }
 
-.header_account-list-link {
+.header_account-list-btn {
   display: block;
-  text-decoration: none;
   color: var(--content-text-color);
 }
 
-.header_account-list-link:hover {
+.header_account-list-btn:hover {
   color: var(--title-text-color);
+  cursor: pointer;
+}
+
+.userName {
+  text-transform: uppercase;
+  margin-left: 5px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.user-icon {
+  height: 14px;
 }

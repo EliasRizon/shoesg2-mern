@@ -17,6 +17,8 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styles from './Auth.module.scss'
 import { signin, signup } from '~/actions/authActions'
+import GoogleLogin from 'react-google-login'
+import { AUTH } from '~/constants/actionTypes'
 
 const cn = classNames.bind(styles)
 
@@ -52,6 +54,23 @@ function Auth() {
       dispatch(signin(form, navigate))
     }
   }
+
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj
+    const token = res?.tokenId
+
+    try {
+      dispatch({ type: AUTH, data: { result, token } })
+      console.log(result)
+
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const googleError = () =>
+    console.log('Google Sign In was unsuccessful. Try again later')
 
   return (
     <div className={cn('limiter')}>
@@ -217,18 +236,29 @@ function Auth() {
             </div>
 
             <div className={cn('flex-c-m')}>
-              <a href="/" className={cn('login100-social-item', 'bg1')}>
+              <div href="/" className={cn('login100-social-item', 'bg1')}>
                 <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon>
-              </a>
+              </div>
 
-              <a href="/" className={cn('login100-social-item', 'bg2')}>
+              <div href="/" className={cn('login100-social-item', 'bg2')}>
                 <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
-              </a>
+              </div>
 
-              <a href="/" className={cn('login100-social-item', 'bg3')}>
-                <i className={cn('fa fa-google')}></i>
-                <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
-              </a>
+              <GoogleLogin
+                clientId="564033717568-bu2nr1l9h31bhk9bff4pqbenvvoju3oq.apps.googleusercontent.com"
+                render={(renderProps) => (
+                  <div
+                    className={cn('login100-social-item', 'bg3')}
+                    onClick={renderProps.onClick}
+                  >
+                    <i className={cn('fa fa-google')}></i>
+                    <FontAwesomeIcon icon={faGoogle}></FontAwesomeIcon>
+                  </div>
+                )}
+                onSuccess={googleSuccess}
+                onFailure={googleError}
+                cookiePolicy="single_host_origin"
+              />
             </div>
 
             <div
