@@ -1,5 +1,3 @@
-'use strict'
-
 import classNames from 'classnames/bind'
 import styles from './SlideShow.module.scss'
 
@@ -100,7 +98,7 @@ function SlideShow() {
           <div className={cn('grid__row')} style={{ height: '100%' }}>
             <div className={cn('grid__column-navigation')}>
               <label
-                for={cn('radio1')}
+                htmlFor={cn('radio1')}
                 className={cn('manual-btn', 'manual-btn1')}
               >
                 <div
@@ -112,7 +110,7 @@ function SlideShow() {
                 ></div>
               </label>
               <label
-                for={cn('radio2')}
+                htmlFor={cn('radio2')}
                 className={cn('manual-btn', 'manual-btn2')}
               >
                 <div
@@ -124,7 +122,7 @@ function SlideShow() {
                 ></div>
               </label>
               <label
-                for={cn('radio3')}
+                htmlFor={cn('radio3')}
                 className={cn('manual-btn', 'manual-btn3')}
               >
                 <div
@@ -136,7 +134,7 @@ function SlideShow() {
                 ></div>
               </label>
               <label
-                for={cn('radio4')}
+                htmlFor={cn('radio4')}
                 className={cn('manual-btn', 'manual-btn4')}
               >
                 <div
@@ -148,7 +146,7 @@ function SlideShow() {
                 ></div>
               </label>
               <label
-                for={cn('radio5')}
+                htmlFor={cn('radio5')}
                 className={cn('manual-btn', 'manual-btn5')}
               >
                 <div

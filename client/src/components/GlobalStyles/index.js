@@ -1,5 +1,3 @@
-'use strict'
-
 import './GlobalStyles.scss'
 
 function GlobalStyles({ children }) {

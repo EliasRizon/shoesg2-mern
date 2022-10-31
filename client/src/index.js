@@ -4,11 +4,10 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import GlobalStyles from './components/GlobalStyles'
 import { Provider } from 'react-redux'
-import { configureStore, applyMiddleware, compose } from 'redux'
 import { reducers } from './reducers'
-import thunk from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit'
 
-const store = configureStore(reducers, {}, compose(applyMiddleware(thunk)))
+const store = configureStore({ reducer: reducers })
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

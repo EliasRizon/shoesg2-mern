@@ -17,7 +17,7 @@ app.use('/shoes', shoesRoutes)
 
 const CONNECTION_URL =
   'mongodb+srv://ngothuan2422001:Ngovanthuan2001@thuanscluster.mxk3ruo.mongodb.net/shoesg2?retryWrites=true&w=majority'
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })

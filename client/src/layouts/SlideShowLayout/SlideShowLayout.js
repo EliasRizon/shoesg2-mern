@@ -1,10 +1,8 @@
-'use strict'
-
-import Header from '../components/Header'
-import SearchBar from '../components/SearchBar'
-import SlideShow from '../components/SlideShow'
-import Footer from '../components/Footer'
-import Sidebar from '../components/Sidebar'
+import Header from '~/components/Header'
+import SearchBar from '~/components/SearchBar'
+import SlideShow from '~/components/SlideShow'
+import Footer from '~/components/Footer'
+import Sidebar from '~/components/Sidebar'
 
 function SlideShowLayout({ children }) {
   return (

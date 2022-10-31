@@ -1,5 +1,3 @@
-'use strict'
-
 import classNames from 'classnames/bind'
 import styles from './Header.module.scss'
 
@@ -38,7 +36,7 @@ function Header() {
           >
             <a
               style={{ color: 'var(--title-text-color)' }}
-              href="/login"
+              href="/auth"
               className={cn(
                 'header__navbar-item-link',
                 'header__navbar-item-link-account',

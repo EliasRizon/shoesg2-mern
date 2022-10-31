@@ -1,13 +1,22 @@
-'use strict'
-
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames/bind'
 import styles from './Home.module.scss'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import Shoes from '~/components/Shoes'
+
+import { getShoes } from '~/actions/shoesActions'
 
 const cn = classNames.bind(styles)
 
 function Home() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getShoes())
+  }, [dispatch])
+
   return (
     <div
       style={{ paddingRight: '0' }}
@@ -46,32 +55,7 @@ function Home() {
         </div>
       </div>
 
-      <div className={cn('product')}>
-        <div className={cn('grid__row', 'product-row')}>
-          <div className={cn('grid__column-product')}>
-            <div className={cn('product-items')}>
-              <a className={cn('product-items-link')} href="/">
-                <div
-                  className={cn('product-items__img')}
-                  style={{
-                    backgroundImage:
-                      'url(https://i.postimg.cc/vTpkYzRc/a0.webp)',
-                  }}
-                ></div>
-                <h4 className={cn('product-items__name')}>Name</h4>
-              </a>
-              <a href="/" className={cn('product-items__brand-link')}>
-                <div className={cn('product-items__brand')}>Brand</div>
-              </a>
-              <div className={cn('product-items__price')}>
-                <span className={cn('product-items__price-current')}>
-                  100000
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Shoes />
 
       <ul className={cn('pagination')}>
         <li className={cn('pagination-items')}>
