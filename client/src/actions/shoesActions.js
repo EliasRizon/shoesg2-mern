@@ -1,4 +1,4 @@
-import * as api from '../api/index.js'
+import * as api from '../api/api.js'
 import {
   END_LOADING,
   FETCH_ALL,

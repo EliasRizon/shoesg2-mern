@@ -1,9 +1,27 @@
 import classNames from 'classnames/bind'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import styles from './Header.module.scss'
+import decode from 'jwt-decode'
 
 const cn = classNames.bind(styles)
 
 function Header() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+  const location = useLocation()
+
+  // useEffect(() => {
+  //   const token = user?.token
+
+  //   if (token) {
+  //     const decodedToken = decode(token)
+
+  //     if (decodedToken.exp * 1000 < new Date().getTime()) logout()
+  //   }
+
+  //   setUser(JSON.parse(localStorage.getItem('profile')))
+  // }, [location])
+
   return (
     <header className={cn('header')}>
       <div className={cn('header-nav')}>

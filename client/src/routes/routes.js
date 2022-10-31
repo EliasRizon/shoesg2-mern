@@ -1,4 +1,4 @@
-import { DefaultLayout, SlideShowLayout } from '~/layouts'
+import { DefaultLayout, HomeLayout } from '~/layouts'
 
 import Home from '~/pages/Home'
 import Cart from '~/pages/Cart'
@@ -9,7 +9,7 @@ export const publicRoutes = [
   { path: '/:slug', conponemt: ShoeDetail, layout: DefaultLayout },
   { path: '/brand', conponemt: Cart, layout: DefaultLayout },
   { path: '/auth', conponemt: Auth, layout: null },
-  { path: '/', conponemt: Home, layout: SlideShowLayout },
+  { path: '/', conponemt: Home, layout: HomeLayout },
 ]
 
 export const privateRoutes = []

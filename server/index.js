@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import shoesRoutes from './routes/shoeRoutes.js'
+import userRouters from './routes/userRoutes.js'
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 
 app.use('/shoes', shoesRoutes)
+app.use('/user', userRouters)
 
 const CONNECTION_URL =
   'mongodb+srv://ngothuan2422001:Ngovanthuan2001@thuanscluster.mxk3ruo.mongodb.net/shoesg2?retryWrites=true&w=majority'

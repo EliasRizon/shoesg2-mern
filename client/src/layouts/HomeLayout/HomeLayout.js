@@ -4,7 +4,7 @@ import SlideShow from '~/components/SlideShow'
 import Footer from '~/components/Footer'
 import Sidebar from '~/components/Sidebar'
 
-function SlideShowLayout({ children }) {
+function HomeLayout({ children }) {
   return (
     <div>
       <Header />
@@ -23,4 +23,4 @@ function SlideShowLayout({ children }) {
   )
 }
 
-export default SlideShowLayout
+export default HomeLayout
