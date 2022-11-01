@@ -62,30 +62,44 @@ function Header() {
             style={{ textAlign: 'center' }}
             className={cn('header__navbar-item', 'account-btn')}
           >
-            <a
-              style={{ color: 'var(--title-text-color)' }}
-              href="/auth"
-              className={cn(
-                'header__navbar-item-link',
-                'header__navbar-item-link-account',
-              )}
-            >
-              {user?.result ? (
-                <>
-                  <FontAwesomeIcon
-                    className={cn('user-icon')}
-                    icon={faUser}
-                  ></FontAwesomeIcon>
-                  <span className={cn('userName')}>
-                    {user.result.firstName || user.result.name}
-                  </span>
-                </>
-              ) : (
-                'ĐĂNG NHẬP'
-              )}
-            </a>
+            {user?.result ? (
+              <div
+                style={{ color: 'var(--title-text-color)' }}
+                className={cn(
+                  'header__navbar-item-link',
+                  'header__navbar-item-link-account',
+                )}
+              >
+                <FontAwesomeIcon
+                  className={cn('user-icon')}
+                  icon={faUser}
+                ></FontAwesomeIcon>
+                <span className={cn('userName')}>
+                  {user.result.firstName || user.result.name}
+                </span>
+              </div>
+            ) : (
+              <a
+                style={{ color: 'var(--title-text-color)' }}
+                href="/auth"
+                className={cn(
+                  'header__navbar-item-link',
+                  'header__navbar-item-link-account',
+                )}
+              >
+                ĐĂNG NHẬP
+              </a>
+            )}
+
             {user?.result && (
               <ul className={cn('header_account-list')}>
+                {user?.result.role === 'admin' && (
+                  <li>
+                    <div className={cn('header_account-list-btn')}>
+                      QUẢN LÝ SẢN PHẨM
+                    </div>
+                  </li>
+                )}
                 <li>
                   <div className={cn('header_account-list-btn')}>
                     TÀI KHOẢN CỦA TÔI
