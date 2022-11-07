@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import { useCallback, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import styles from './Header.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
@@ -35,26 +35,26 @@ function Header() {
   return (
     <header className={cn('header')}>
       <div className={cn('header-nav')}>
-        <a className={cn('logo-link')} href="/">
+        <Link className={cn('logo-link')} to="/">
           <div className={cn('logo-link-img')}></div>
-        </a>
+        </Link>
         <nav className={cn('header__navbar')}>
           <div className={cn('header-nav-list')}>
             <ul className={cn('header__navbar-list')}>
               <li className={cn('header__navbar-item')}>
-                <a href="/" className={cn('header__navbar-item-link')}>
+                <Link to="/" className={cn('header__navbar-item-link')}>
                   <b>CỬA HÀNG</b>
-                </a>
+                </Link>
               </li>
               <li className={cn('header__navbar-item')}>
-                <a href="/" className={cn('header__navbar-item-link')}>
+                <Link to="/" className={cn('header__navbar-item-link')}>
                   <b>HỖ TRỢ</b>
-                </a>
+                </Link>
               </li>
               <li className={cn('header__navbar-item')}>
-                <a href="/" className={cn('header__navbar-item-link')}>
+                <Link to="/" className={cn('header__navbar-item-link')}>
                   <b>TIN TỨC</b>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -79,16 +79,16 @@ function Header() {
                 </span>
               </div>
             ) : (
-              <a
+              <Link
                 style={{ color: 'var(--title-text-color)' }}
-                href="/auth"
+                to="/auth"
                 className={cn(
                   'header__navbar-item-link',
                   'header__navbar-item-link-account',
                 )}
               >
                 ĐĂNG NHẬP
-              </a>
+              </Link>
             )}
 
             {user?.result && (

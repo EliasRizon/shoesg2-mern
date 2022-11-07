@@ -8,10 +8,15 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
+import { useCallback } from 'react'
 
 const cn = classNames.bind(styles)
 
 function Footer() {
+  const backtotop = useCallback(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [])
+
   return (
     <footer className={cn('footer')}>
       <div className={cn('grid__full-width')}>
@@ -31,12 +36,12 @@ function Footer() {
               <FontAwesomeIcon icon={faYoutube}></FontAwesomeIcon>
             </a>
           </li>
-          <a href="#" className={cn('backtotop-button')}>
+          <div className={cn('backtotop-button')} onClick={backtotop}>
             <FontAwesomeIcon
               className={cn('backtotop-icon')}
               icon={faCaretUp}
             ></FontAwesomeIcon>
-          </a>
+          </div>
         </ul>
         <div className={cn('grid__row')}>
           <div className={cn('grid__column-fooder')}>
